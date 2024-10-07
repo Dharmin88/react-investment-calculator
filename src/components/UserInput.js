@@ -1,27 +1,4 @@
-import { useState } from 'react';
-
-export default function UserInput() {
-
-    // const [initialInvestment, setInitialInvestment] = useState();
-    // const [annualInvestment, setAnnualInvestment] = useState();
-    // const [expectedReturn, setExpectedReturn] = useState();
-    // const [duration, setDuration] = useState();
-
-    const [userInput, setUserInput] = useState({
-        initialInvestment: 10000,
-        annualInvestment: 1200,
-        expectedReturn: 6,
-        duration: 10
-    });
-
-    function handleChange(inputIdentifier, newValue) {
-        setUserInput(prevUserInput => {
-            return {
-                ...prevUserInput,
-                [inputIdentifier]: newValue
-            };
-        });
-    }
+export default function UserInput({ userInput, onChange }) {
 
     return (
         <>
@@ -33,7 +10,7 @@ export default function UserInput() {
                         required 
                         value={userInput.initialInvestment}
                         onChange={
-                            (event) => handleChange(
+                            (event) => onChange(
                                 "initialInvestment", event.target.value
                                 )
                         }
@@ -46,7 +23,7 @@ export default function UserInput() {
                         required
                         value={userInput.annualInvestment}
                         onChange={
-                            (event) => handleChange(
+                            (event) => onChange(
                                 "annualInvestment",
                                 event.target.value
                             )
@@ -62,7 +39,7 @@ export default function UserInput() {
                         required
                         value={userInput.expectedReturn}
                         onChange={
-                            (event) => handleChange(
+                            (event) => onChange(
                                 "expectedReturn",
                                 event.target.value
                             )
@@ -76,7 +53,7 @@ export default function UserInput() {
                         required
                         value={userInput.duration}
                         onChange={
-                            (event) => handleChange(
+                            (event) => onChange(
                                 "duration",
                                 event.target.value
                             )
